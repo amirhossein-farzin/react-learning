@@ -1,20 +1,32 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import "./style.css";
+
+var interval;
 class Timer extends React.Component {
   constructor() {
     super();
     this.state = {
-      time: new Date().toLocaleTimeString(),
+      time: 10,
     };
   }
-  render() {
-    setInterval(() => {
+  componentDidMount() {
+    interval = setInterval(() => {
       this.setState({
-        time: new Date().toLocaleTimeString()
+        time: this.state.time - 1,
       });
     }, 1000);
-    return <h2 className="timer">it is {this.state.time}</h2>;
+  }
+  componentDidUpdate(){
+    if (this.state.time === 0) {
+        clearInterval(interval)
+    }
+  }
+  render() {
+    return <>
+    <h2 className="timer">it is {this.state.time}</h2>
+    <button onClick={this.props.handleSetTitle}>Change</button>
+    </>;
   }
 }
 export default Timer;
