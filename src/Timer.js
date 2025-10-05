@@ -86,9 +86,13 @@ class Timer extends React.Component {
           </button>
           <button
             className="action-button reset-button"
-            onClick={this.props.handleSetTitle}
+            onClick={this.props.handleSetIsLight}
+            style={{
+              background: this.props.isLight ? "black" : "white",
+              color: this.props.isLight ? "white" : "black",
+            }}
           >
-            title
+            {this.props.isLight ? "dark" : "light"}
           </button>
         </div>
       </>

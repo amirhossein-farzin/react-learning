@@ -29,16 +29,17 @@ import Timer from "./Timer";
 
 //! Creat components with HOOKS
 const App = () => {
-  const [title, setTitle] = useState("Hello World!");
+//  const [title, setTitle] = useState("Hello World!");
+  const [isLight, setIsLight] = useState(false);
 
-  const handleSetTitle = () => {
-    setTitle("Enjoy Learning");
+  const handleSetIsLight = () => {
+    setIsLight(!isLight)
   };
 
   return (
-    <div className="main">
-      <Hello title={title} />
-      <Timer handleSetTitle={handleSetTitle} />
+    <div className="main" style={{background:isLight ? "white" : "black"}}>
+      <Hello />
+      <Timer isLight={isLight} handleSetIsLight={handleSetIsLight}/>
     </div>
   );
 };
