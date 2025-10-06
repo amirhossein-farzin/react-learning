@@ -1,45 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./style.css";
 import Hello from "./Hello";
 import Timer from "./Timer";
 
-//! Creat component with classes
-// class App extends React.Component {
-//     constructor(){
-//         super();
-//         this.state = {
-//             title : "Hello World!"
-//         }
-//     }
-//     handleSetTitle = ()=>{
-//         this.setState({
-//             title: "Enjoy learning!"
-//         })
-//     }
-//   render() {
-//     return (
-//       <div className="main">
-//         <Hello title={this.state.title} />
-//         <Timer handleSetTitle={this.handleSetTitle} />
-//       </div>
-//     );
-//   }
-// }
-
 //! Creat components with HOOKS
 const App = () => {
-//  const [title, setTitle] = useState("Hello World!");
+  //  const [title, setTitle] = useState("Hello World!");
   const [isLight, setIsLight] = useState(false);
 
+  useEffect(() => {
+    console.log("useEffect"); //? یکبار موقعی که صفحه باز میشه اجرا میشه
+    return () => {
+      //? داخل این هر دستوری بنویسیم، هروقت اون کامپوننت بسته شد، مثلا به صفحه دیگه رفتیم، اجرا میشه
+    };
+  }, [isLight]); //? میگه هرموقع اون چیزی که میخوام اتفاق افتاد، این کار کنه/ مثلا هرموقع اینجا ایز لایت تغییر کرد این لاگ میگیره
+
   const handleSetIsLight = () => {
-    setIsLight(!isLight)
+    setIsLight(!isLight);
   };
 
   return (
-    <div className="main" style={{background:isLight ? "white" : "black"}}>
+    <div className="main" style={{ background: isLight ? "white" : "black" }}>
       <Hello />
-      <Timer isLight={isLight} handleSetIsLight={handleSetIsLight}/>
+      <Timer isLight={isLight} handleSetIsLight={handleSetIsLight} />
     </div>
   );
 };
