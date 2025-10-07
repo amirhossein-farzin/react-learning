@@ -3,11 +3,13 @@ import { createRoot } from "react-dom/client";
 import "./style.css";
 import Hello from "./Hello";
 import Timer from "./Timer";
+import TimeList from "./TimeList";
 
 //! Creat components with HOOKS
 const App = () => {
   //  const [title, setTitle] = useState("Hello World!");
   const [isLight, setIsLight] = useState(false);
+  const [timeArr, setTimeArr] = useState(["00:05:31", "00:03:45"]);
 
   useEffect(() => {
     console.log("useEffect"); //? یکبار موقعی که صفحه باز میشه اجرا میشه
@@ -23,7 +25,12 @@ const App = () => {
   return (
     <div className="main" style={{ background: isLight ? "white" : "black" }}>
       <Hello />
-      <Timer isLight={isLight} handleSetIsLight={handleSetIsLight} />
+      <Timer
+        timeArr={timeArr}
+        setTimeArr={setTimeArr}
+        isLight={isLight}
+        handleSetIsLight={handleSetIsLight}
+      />
     </div>
   );
 };

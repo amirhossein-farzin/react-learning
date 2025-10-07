@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import "./style.css";
+import TimeList from "./TimeList";
 
 var interval;
 class Timer extends React.Component {
@@ -55,6 +56,16 @@ class Timer extends React.Component {
     });
   };
 
+  handleSaveTimer = () => {
+    let h = this.state.hour;
+    let m = this.state.minute;
+    let s = this.state.second;
+    let newTimeList = `${h > 9 ? h : "0" + h} : ${m > 9 ? m : "0" + m} : ${
+      s > 9 ? s : "0" + s
+    }`;
+    this.props.setTimeArr([...this.props.timeArr, newTimeList]); //? ریختیم داخل یک آرایه newTimeList به همراه  timeArr خودش دوتا آرایه داره، حالا ما مقادیر آرایه timeArrاینجا میگه که
+  };
+
   render() {
     let h = this.state.hour;
     let m = this.state.minute;
@@ -62,9 +73,9 @@ class Timer extends React.Component {
 
     return (
       <>
-        <h2 className="timer">{`${h > 9 ? h : "0" + h} : ${
-          m > 9 ? m : "0" + m
-        } : ${s > 9 ? s : "0" + s}`}</h2>
+        <h2 className="timer" onClick={this.handleSaveTimer}>{`${
+          h > 9 ? h : "0" + h
+        } : ${m > 9 ? m : "0" + m} : ${s > 9 ? s : "0" + s}`}</h2>
         <div>
           <button
             className="action-button start-button"
@@ -95,6 +106,7 @@ class Timer extends React.Component {
             {this.props.isLight ? "dark" : "light"}
           </button>
         </div>
+        <TimeList>{this.props.timeArr}</TimeList>
       </>
     );
   }
