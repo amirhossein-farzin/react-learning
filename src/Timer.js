@@ -2,6 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./style.css";
 import TimeList from "./TimeList";
+import { TestContext } from "./TestContext";
 
 var interval;
 class Timer extends React.Component {
@@ -14,7 +15,7 @@ class Timer extends React.Component {
       isStart: false,
     };
   }
-
+  static contextType = TestContext;
   startInterval = () => {
     if (this.state.isStart == false) {
       this.setState({
@@ -63,7 +64,7 @@ class Timer extends React.Component {
     let newTimeList = `${h > 9 ? h : "0" + h} : ${m > 9 ? m : "0" + m} : ${
       s > 9 ? s : "0" + s
     }`;
-    this.props.setTimeArr([...this.props.timeArr, newTimeList]); //? ریختیم داخل یک آرایه newTimeList به همراه  timeArr خودش دوتا آرایه داره، حالا ما مقادیر آرایه timeArrاینجا میگه که
+    this.context.setTimeArr([...this.context.timeArr, newTimeList]); //? ریختیم داخل یک آرایه newTimeList به همراه  timeArr خودش دوتا آرایه داره، حالا ما مقادیر آرایه timeArrاینجا میگه که
   };
 
   render() {
@@ -106,7 +107,7 @@ class Timer extends React.Component {
             {this.props.isLight ? "dark" : "light"}
           </button>
         </div>
-        <TimeList>{this.props.timeArr}</TimeList>
+        <TimeList>{this.context.timeArr}</TimeList>
       </>
     );
   }

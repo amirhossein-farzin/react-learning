@@ -4,7 +4,7 @@ import "./style.css";
 import Hello from "./Hello";
 import Timer from "./Timer";
 import TimeList from "./TimeList";
-
+import { TestContext } from "./TestContext";
 //! Creat components with HOOKS
 const App = () => {
   //  const [title, setTitle] = useState("Hello World!");
@@ -23,15 +23,17 @@ const App = () => {
   };
 
   return (
-    <div className="main" style={{ background: isLight ? "white" : "black" }}>
-      <Hello />
-      <Timer
-        timeArr={timeArr}
-        setTimeArr={setTimeArr}
-        isLight={isLight}
-        handleSetIsLight={handleSetIsLight}
-      />
-    </div>
+    <TestContext.Provider value={{ timeArr: timeArr, setTimeArr: setTimeArr }}>
+      <div className="main" style={{ background: isLight ? "white" : "black" }}>
+        <Hello />
+        <Timer
+          //timeArr={timeArr}
+          //setTimeArr={setTimeArr}
+          isLight={isLight}
+          handleSetIsLight={handleSetIsLight}
+        />
+      </div>
+    </TestContext.Provider>
   );
 };
 export default App;
