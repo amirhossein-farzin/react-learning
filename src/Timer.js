@@ -58,12 +58,13 @@ class Timer extends React.Component {
   };
 
   handleSaveTimer = () => {
-    let h = this.state.hour;
-    let m = this.state.minute;
-    let s = this.state.second;
-    let newTimeList = `${h > 9 ? h : "0" + h} : ${m > 9 ? m : "0" + m} : ${
-      s > 9 ? s : "0" + s
-    }`;
+    // let h = this.state.hour;
+    // let m = this.state.minute;
+    // let s = this.state.second;
+    // let newTimeList = `${h > 9 ? h : "0" + h} : ${m > 9 ? m : "0" + m} : ${
+    //   s > 9 ? s : "0" + s
+    // }`;
+    let newTimeList = document.querySelector(".timer").innerHTML
     this.context.setTimeArr([...this.context.timeArr, newTimeList]); //? ریختیم داخل یک آرایه newTimeList به همراه  timeArr خودش دوتا آرایه داره، حالا ما مقادیر آرایه timeArrاینجا میگه که
   };
 
@@ -107,7 +108,6 @@ class Timer extends React.Component {
             {this.props.isLight ? "dark" : "light"}
           </button>
         </div>
-        <TimeList>{this.context.timeArr}</TimeList>
       </>
     );
   }
