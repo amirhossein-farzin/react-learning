@@ -1,18 +1,43 @@
-import React from 'react'
-import TopForm from './Topform'
-import TaskItems from './TaskItems'
+import React, { useState } from "react";
+import TopForm from "./Topform";
+import { TaskContext } from "./TaskContext";
+import TaskItems from "./TaskItems";
 
-const App = ()=>{
-  return(
-    <div className='container w-100 h-100 p-3'>
-      <div className='row h-100 justify-content-center align-items-start'>
-        <div className='col-12 col-md-8 col-lg-6 bg-light shadow rounded-3 p-3'>
-          <TopForm />
-          <TaskItems />
+const App = () => {
+  const [taskItems, setTaskItems] = useState([
+    {
+      id: 1,
+      title: "First task",
+      done: false,
+    },
+    {
+      id: 2,
+      title: "Second task",
+      done: true,
+    },
+    {
+      id: 3,
+      title: "Third task",
+      done: false,
+    },
+  ]);
+  return (
+    <div className="container w-100 h-100 p-3">
+      <div className="row h-100 justify-content-center align-items-start">
+        <div className="col-12 col-md-8 col-lg-6 bg-light shadow rounded-3 p-3">
+          <TaskContext.Provider
+            value={{
+              taskItems,
+              setTaskItems,
+            }}
+          >
+            <TopForm />
+            <TaskItems />
+          </TaskContext.Provider>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
