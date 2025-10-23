@@ -35,3 +35,4 @@ const Fcomponent = (props, ref) => {
   );
 };
 export default forwardRef(Fcomponent);
+// TODO: We had Higher-Order Components last session, and now we're using one — forwardRef. It gives us props and ref, and I use them as arguments in our functional component.
