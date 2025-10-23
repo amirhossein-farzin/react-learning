@@ -43,7 +43,6 @@ class PureCompo extends PureComponent {
           className="form-control"
           autoComplete="off"
         />
-        //? add ref (refrence) and link that to myInput
         <button
           className="btn btn-warning my-3"
           onClick={this.handleChangeName}
