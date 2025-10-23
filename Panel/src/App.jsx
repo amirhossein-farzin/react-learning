@@ -1,6 +1,13 @@
+import Content from "./Content";
+import Sidebar from "./Sidebar";
 
-function App() {
+const App = () => {
+  return (
+    <div>
+      <Sidebar />
+      <Content />
+    </div>
+  );
+};
 
-}
-
-export default App
+export default App;
