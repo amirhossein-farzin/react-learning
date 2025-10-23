@@ -1,38 +1,32 @@
-import React, { memo, useEffect, useRef, useState } from "react";
-
+import React, { forwardRef, useState } from "react";
 let counter = 0;
-const Fcomponent = () => {
+const Fcomponent = (props, ref) => {
+  //! Using props and ref (forwarRef) //* this ref is this createRef:  this.myInput = createRef(); / this code is in ParentComponent.jsx
   const [name, setName] = useState("");
-    //! Create name and setName with useState
-  const myInput = useRef();
-    //! Create myInput and using useRef // in functional components we use useRef & in classical component we use createRef
   const handleChangeName = () => {
-    setName(myInput.current.value);
+    setName(ref.current.value);
   };
-
-  useEffect(()=>{
-    myInput.current.focus()
-  }, [])
-    //! Using useEffect for having access to focus 
+  //! Using ref instead of myInput
   return (
     <div className="form-fa-group text-center mt-4 p-3">
       <div className="text-center text-dark">حدث کلمه</div>
       <input
-        ref={myInput}
+        ref={ref}
         type="text"
         className="form-control"
         autoComplete="off"
       />
-      {/* We don't use this.myInput in functional components/ We just using myInput */}
+      {/* Using ref instead of myInput */}
       <button className="btn btn-warning my-3" onClick={handleChangeName}>
         ثبت
       </button>
       <button
         className="btn btn-secondary my-3 mx-2"
         onClick={() => {
-          myInput.current.value = "";
+          ref.current.value = "";
         }}
       >
+        {/* Using ref instead of myInput */}
         مخفی
       </button>
       <br />
@@ -40,6 +34,4 @@ const Fcomponent = () => {
     </div>
   );
 };
-export default memo(Fcomponent);
- //! Using memo to inherit in functional components
-//* In newer versions of React, memoization is often applied automatically. In many cases, it's no longer necessary to manually use memo in your code.
+export default forwardRef(Fcomponent);
