@@ -1,5 +1,6 @@
 import style from "./style.module.css";
 import userImage from "./assets/images/user2.jpg";
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <div className={`${style.sidebar_section} bg-secondary`}>
@@ -8,16 +9,24 @@ const Sidebar = () => {
           <img src={userImage} alt="" />
         </li>
         <li>
-          <a href="/">کاربران</a>
+          <Link to="/">کاربران</Link>
+          {/* 4- Linking this links to <Route path="/posts" element={<Posts />} /> this Routes in Context.jsx*/}
+          {/*5- now when we clicking them, our browser refreshed. cause we don't need refreshing, we must change <a> to link. */}
         </li>
         <li>
-          <a href="/">پست ها</a>
+          <Link to="/posts">پست ها</Link>
+          {/* 4- Linking this links to <Route path="/posts" element={<Posts />} /> this Routes in Context.jsx*/}
+          {/*5- now when we clicking them, our browser refreshed. cause we don't need refreshing, we must change <a> to link. */}
         </li>
         <li>
-          <a href="/">گالری</a>
+          <Link to="/gallery">گالری</Link>
+          {/* 4- Linking this links to <Route path="/gallery" element={<Gallery />} /> this Routes in Context.jsx*/}
+          {/*5- now when we clicking them, our browser refreshed. cause we don't need refreshing, we must change <a> to link. */}
         </li>
         <li>
-          <a href="/">کارها</a>
+          <Link to="/todos">کارها</Link>
+          {/* 4- Linking this links to <Route path="/todos" element={<Todos />} /> this Routes in Context.jsx*/}
+          {/*5- now when we clicking them, our browser refreshed. cause we don't need refreshing, we must change <a> to link. */}
         </li>
       </ul>
     </div>
@@ -25,3 +34,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+//TODO: 6- now we just use BrowserRouter in our Context Component, in App.jsx we use <Content /> and <Sidebar />, we must use BrowserRouter in sidebar too. so, we put <Content /> and <Sidebar /> in <BrowserRouter> tag in App.jsx
