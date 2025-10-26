@@ -5,7 +5,6 @@ import { MainContext } from "./contexts/MainContext";
 import { useContext } from "react";
 const Sidebar = () => {
   const { showMenu, setShowMenu } = useContext(MainContext);
-  //* 6- now agian we get access to MainContext with useContext method and adding our style
   return (
     <div
       className={`${style.sidebar_section} bg-secondary`}
@@ -16,16 +15,16 @@ const Sidebar = () => {
           <img src={userImage} alt="" />
         </li>
         <li>
-          <Link to="/">کاربران</Link>
+          <Link to="/user">کاربران</Link>
         </li>
         <li>
-          <Link to="/posts">پست ها</Link>
+          <Link to="/post">پست ها</Link>
         </li>
         <li>
           <Link to="/gallery">گالری</Link>
         </li>
         <li>
-          <Link to="/todos">کارها</Link>
+          <Link to="/todo">کارها</Link>
         </li>
       </ul>
     </div>
