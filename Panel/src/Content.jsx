@@ -23,17 +23,14 @@ const Content = () => {
       }}
     >
       <i
-        className={`${style.menu_button} fas fa-bars text-dark m-2 pointer`}
+        className={`${style.menu_button} fas fa-bars text-dark m-2 pointer d-md-none`}
         onClick={handleShowMenu}
       ></i>
       <Routes>
         <Route path="/user" element={<Users />} />
-        <Route path="/user/add/" element={<AddUser />} >
-          <Route path=":id" />
-          {/* When we put a id number after add, we want to show <AddUser /> again, so path =":id" does do this for us. e.g: /user/add/22 => that is mean a user with id num 22 */}
+        <Route path="/user/add/" element={<AddUser />}>
+          <Route path=":userId" />
         </Route>
-        {/* 2- Give Route's path, when path is /user/add, we go to <AddUser /> */}
-        {/* 3- Now we must give this path to our button */}
         <Route path="/post" element={<Posts />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/todo" element={<Todos />} />

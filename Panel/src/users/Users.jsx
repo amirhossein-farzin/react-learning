@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import style from "../style.module.css";
-
+//TODO: We need to add functionality to the Edit button so that it opens the edit form.
 const Users = () => {
   return (
     <div className={`${style.item_content} mt-5 p-4 container-fluid`}>
@@ -19,7 +19,6 @@ const Users = () => {
               <i className="fas fa-plus text-light"></i>
             </button>
           </Link>
-          {/* 4- This button is add user's button, so we linking that to /user/add - that's mean when the user clicking on + button, go to AddUser component */}
         </div>
       </div>
       <table className="table bg-light shadow">
@@ -39,7 +38,10 @@ const Users = () => {
             <td>Farzin</td>
             <td>amirfarzinf80@gmail.com</td>
             <td>
-              <i className="fas fa-edit text-warning mx-2 pointer"></i>
+              <Link to={"/user/add/2"}>
+                <i className="fas fa-edit text-warning mx-2 pointer"></i>
+              </Link>
+              {/* 1- Linking the Edit button to /user/add/id */}
               <i className="fas fa-trash text-danger mx-2 pointer"></i>
             </td>
           </tr>
