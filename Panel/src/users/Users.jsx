@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import style from "../style.module.css";
 
 const Users = () => {
@@ -13,9 +14,12 @@ const Users = () => {
           />
         </div>
         <div className="col-2 text-start px-0">
-          <button className="btn btn-success">
-            <i className="fas fa-plus text-light"></i>
-          </button>
+          <Link to={"/user/add"}>
+            <button className="btn btn-success">
+              <i className="fas fa-plus text-light"></i>
+            </button>
+          </Link>
+          {/* 4- This button is add user's button, so we linking that to /user/add - that's mean when the user clicking on + button, go to AddUser component */}
         </div>
       </div>
       <table className="table bg-light shadow">
