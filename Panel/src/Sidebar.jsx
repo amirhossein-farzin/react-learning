@@ -22,7 +22,6 @@ const Sidebar = () => {
         >
           <li>کاربران</li>
         </NavLink>
-        {/* 8- We use NavLink instead of Link when we want to style the active link. // When clicked, it navigates to the specified path, and isActive becomes true, so the style is applied. */}
         <NavLink
           className={({ isActive }) => {
             return isActive ? "active_nav" : "";
@@ -31,7 +30,6 @@ const Sidebar = () => {
         >
           <li>پست ها</li>
         </NavLink>
-        {/* 8- We use NavLink instead of Link when we want to style the active link. // When clicked, it navigates to the specified path, and isActive becomes true, so the style is applied. */}
         <NavLink
           className={({ isActive }) => {
             return isActive ? "active_nav" : "";
@@ -40,7 +38,6 @@ const Sidebar = () => {
         >
           <li>گالری</li>
         </NavLink>
-        {/* 8- We use NavLink instead of Link when we want to style the active link. // When clicked, it navigates to the specified path, and isActive becomes true, so the style is applied. */}
         <NavLink
           className={({ isActive }) => {
             return isActive ? "active_nav" : "";
@@ -49,7 +46,6 @@ const Sidebar = () => {
         >
           <li>کارها</li>
         </NavLink>
-        {/* 8- We use NavLink instead of Link when we want to style the active link. // When clicked, it navigates to the specified path, and isActive becomes true, so the style is applied. */}
       </ul>
     </div>
   );

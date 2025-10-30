@@ -1,11 +1,32 @@
 import { Link, useNavigate } from "react-router-dom";
 import style from "../style.module.css";
-//TODO: We need to add functionality to the Edit button so that it opens the edit form.
+import Swal from "sweetalert2";
+//TODO: Send parameter => In Content.jsx we have a <Route path="/user/add/" element={<AddUser />}> and give this path, in User.jsx Component we give this path to the Link <Link to={"/user/add"}>, Sometimes we don't want to give a path to our Route, and we want to send that parameter without that. navigate helps us for this.
+//TODO: We're using a library called SweetAlert. After installing it in our project, we can display custom alert messages easily. npm install sweetalert2
+//! The sweet alert site is https://sweetalert2.github.io/
 const Users = () => {
   const navigate = useNavigate();
-  {
-    /* 3- Create a variable and set useNavigate as value  */
-  }
+  const handleDelete = (itemId) => {
+    Swal.fire({
+      title: "حذف آیتم",
+      text: `آیا مطمئن هستید که می خواهید ${itemId} را پاک کنید`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "ok",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "حذف شد",
+          text: `آیتم ${itemId} حذف شد`,
+          icon: "success",
+        });
+      }
+    });
+  };
+  // 5- Create handleDelete function and using sweet alert's action
+  //? We copied this code from the sweet alert's site, and put in our handledelete func
   return (
     <div className={`${style.item_content} mt-5 p-4 container-fluid`}>
       <h4 className="text-center">مدیریت کاربران</h4>
@@ -18,11 +39,12 @@ const Users = () => {
           />
         </div>
         <div className="col-2 text-start px-0">
-          <Link to={"/user/add"}>
+          <Link to={"/user/add"} state={"parameter"}>
             <button className="btn btn-success">
               <i className="fas fa-plus text-light"></i>
             </button>
           </Link>
+          {/* 3- We can pass parameters using the 'state' prop in <Link>, without needing to include them in the URL path in Route. */}
         </div>
       </div>
       <table className="table bg-light shadow">
@@ -45,13 +67,18 @@ const Users = () => {
               <i
                 className="fas fa-edit text-warning mx-2 pointer"
                 onClick={() => {
-                  return navigate("/user/add/2");
+                  return navigate("/user/add/2", {
+                    state: { id: 5, name: "amir" },
+                  });
                 }}
               ></i>
-              {/* 1- Sometimes we can't or don't want to use <link>, we have a hook in react router that we called useNavigate() */}
-              {/* 2- Now we add useNavigate in our code and using that as an onClick in our tag */}
-              {/* 4- We use onClick and create a function and give an action (we must use our navigate), put the path in navigate */}
-              <i className="fas fa-trash text-danger mx-2 pointer"></i>
+              {/* 1- Adding our parameter to navigate =>navigate("/user/add/2", ... ) / the first value is path, the second one is parameter */}
+              {/* Hint: We pass data using the 'state' property in navigate. The value can be an object if we have multiple parameters. */}
+              <i
+                onClick={() => handleDelete(1)}
+                className="fas fa-trash text-danger mx-2 pointer"
+              ></i>
+              {/* 4- Using alert by sweet alert. Adding onClick and create handleDelete func */}
             </td>
           </tr>
         </tbody>

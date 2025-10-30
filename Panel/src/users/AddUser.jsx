@@ -1,11 +1,12 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import style from "../style.module.css";
 const AddUser = () => {
   const { userId } = useParams();
+  const params = useLocation();
+  //* 2- The value in our Route recieved by useParams, The parameter in navigate is recieving by useLocation
+  //! console.log(params) ==>{pathname: '/user/add/2', search: '', hash: '', state: {id: 5, name: 'amir'}, key: 'le4068xk'} <== state is an object
   const navigate = useNavigate();
-  {
-    /* 7- Create a variable and set useNavigate again */
-  }
+
   return (
     <div className="{`${style.item-content} mt-5 p-4 container-fluid container`}">
       <h4 className="text-center text-primary">
@@ -14,28 +15,20 @@ const AddUser = () => {
       <div className="row justify-content-center mt-5">
         <form className="col-12 col-md-6 bg-light rounded shadow-lg p-3">
           <div className="mb-3">
-            <label for="exampleInputEmail" className="form-label">
-              نام و نام خانوادگی
-            </label>
+            <label className="form-label">نام و نام خانوادگی</label>
             <input type="text" className="form-control" />
           </div>
           <div className="mb-3">
-            <label for="exampleInputEmail" className="form-label">
-              نام کاربری
-            </label>
+            <label className="form-label">نام کاربری</label>
             <input type="text" className="form-control" />
           </div>
           <div className="mb-3">
-            <label for="exampleInputEmail" className="form-label">
-              ایمیل
-            </label>
+            <label className="form-label">ایمیل</label>
             <input type="text" className="form-control" />
           </div>
           <div className="mb-3 row">
             <div className="col-6 my-1">
-              <label for="exampleInputEmail" className="form-label">
-                آدرس
-              </label>
+              <label className="form-label">آدرس</label>
               <input type="text" className="form-control" />
             </div>
 
@@ -76,8 +69,6 @@ const AddUser = () => {
             >
               {userId ? "لغو" : "بازگشت"}
             </button>
-            {/* 5- Now we want to make this button's action */}
-            {/* 7- Sometimes we just want to go back to the previous page. In that case, using -1 means "go back one step in history". */}
             <button type="submit" className="btn btn-primary">
               {userId ? "ویرایش" : "افزودن"}
             </button>
