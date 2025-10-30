@@ -1,6 +1,6 @@
 import style from "./style.module.css";
 import userImage from "./assets/images/user2.jpg";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { MainContext } from "./contexts/MainContext";
 import { useContext } from "react";
 const Sidebar = () => {
@@ -14,18 +14,42 @@ const Sidebar = () => {
         <li className={style.sidebar_avatar}>
           <img src={userImage} alt="" />
         </li>
-        <li>
-          <Link to="/user">کاربران</Link>
-        </li>
-        <li>
-          <Link to="/post">پست ها</Link>
-        </li>
-        <li>
-          <Link to="/gallery">گالری</Link>
-        </li>
-        <li>
-          <Link to="/todo">کارها</Link>
-        </li>
+        <NavLink
+          className={({ isActive }) => {
+            return isActive ? "active_nav" : "";
+          }}
+          to="/user"
+        >
+          <li>کاربران</li>
+        </NavLink>
+        {/* 8- We use NavLink instead of Link when we want to style the active link. // When clicked, it navigates to the specified path, and isActive becomes true, so the style is applied. */}
+        <NavLink
+          className={({ isActive }) => {
+            return isActive ? "active_nav" : "";
+          }}
+          to="/post"
+        >
+          <li>پست ها</li>
+        </NavLink>
+        {/* 8- We use NavLink instead of Link when we want to style the active link. // When clicked, it navigates to the specified path, and isActive becomes true, so the style is applied. */}
+        <NavLink
+          className={({ isActive }) => {
+            return isActive ? "active_nav" : "";
+          }}
+          to="/gallery"
+        >
+          <li>گالری</li>
+        </NavLink>
+        {/* 8- We use NavLink instead of Link when we want to style the active link. // When clicked, it navigates to the specified path, and isActive becomes true, so the style is applied. */}
+        <NavLink
+          className={({ isActive }) => {
+            return isActive ? "active_nav" : "";
+          }}
+          to="/todo"
+        >
+          <li>کارها</li>
+        </NavLink>
+        {/* 8- We use NavLink instead of Link when we want to style the active link. // When clicked, it navigates to the specified path, and isActive becomes true, so the style is applied. */}
       </ul>
     </div>
   );

@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import style from "../style.module.css";
 //TODO: We need to add functionality to the Edit button so that it opens the edit form.
 const Users = () => {
+  const navigate = useNavigate();
+  {
+    /* 3- Create a variable and set useNavigate as value  */
+  }
   return (
     <div className={`${style.item_content} mt-5 p-4 container-fluid`}>
       <h4 className="text-center">مدیریت کاربران</h4>
@@ -38,10 +42,15 @@ const Users = () => {
             <td>Farzin</td>
             <td>amirfarzinf80@gmail.com</td>
             <td>
-              <Link to={"/user/add/2"}>
-                <i className="fas fa-edit text-warning mx-2 pointer"></i>
-              </Link>
-              {/* 1- Linking the Edit button to /user/add/id */}
+              <i
+                className="fas fa-edit text-warning mx-2 pointer"
+                onClick={() => {
+                  return navigate("/user/add/2");
+                }}
+              ></i>
+              {/* 1- Sometimes we can't or don't want to use <link>, we have a hook in react router that we called useNavigate() */}
+              {/* 2- Now we add useNavigate in our code and using that as an onClick in our tag */}
+              {/* 4- We use onClick and create a function and give an action (we must use our navigate), put the path in navigate */}
               <i className="fas fa-trash text-danger mx-2 pointer"></i>
             </td>
           </tr>
