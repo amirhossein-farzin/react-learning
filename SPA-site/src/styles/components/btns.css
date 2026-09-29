@@ -1,0 +1,7 @@
+.btn-primary {
+  @apply px-4 py-1 border border-blue-600 text-blue-600 rounded hover:bg-blue-50;
+}
+
+.btn-outline-primary {
+  @apply px-4 py-1 bg-blue-600 text-white rounded hover:bg-blue-700;
+}

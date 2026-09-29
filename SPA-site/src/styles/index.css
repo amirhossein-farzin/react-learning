@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/*!font layer*/
+@import "./font/font.css";
+/*!theme layer*/
+
+/*!base layer*/
+@layer base {
+  @import "./base/reset.css";
+}
+/*!components layer*/
+@layer components {
+  @import "./components/btns.css";
+}
+/*!utilities layer*/
