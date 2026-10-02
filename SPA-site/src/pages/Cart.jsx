@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
 import Order from "../components/cart/Order";
 import CartItem from "../components/cart/CartItem";
-import { CartContext } from "../components/CartContext/CartContext";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
   return (
     <div className="p-4 md:p-8 bg-gray-100 min-h-screen">
       <h1 className="text-2xl md:text-3xl font-bold mb-6">🛒 سبد خرید شما</h1>

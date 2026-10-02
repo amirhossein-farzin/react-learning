@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../components/header/Navbar";
-import { useContext } from "react";
-import { CartContext } from "../../components/CartContext/CartContext";
-import { UserContext } from "../../components/CartContext/UserContext";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../components/redux/userSlice";
 
 function Header() {
-  const { user, logOut } = useContext(UserContext);
-  const { cartItems } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const user = useSelector((state) => state.user.user);
+
   return (
     <header className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
       <h1 className="text-2xl font-bold text-blue-600">
@@ -50,7 +51,7 @@ function Header() {
             </Link>
             <Link to={"/login"}>
               <button
-                onClick={logOut}
+                onClick={() => dispatch(logout())}
                 className="text-white bg-red-400 rounded hover:bg-red-700"
               >
                 خروج

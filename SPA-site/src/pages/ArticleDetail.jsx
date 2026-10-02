@@ -10,13 +10,12 @@ import Tags from "../components/article/articleDetail/Tags";
 import Related from "../components/article/articleDetail/Related";
 const ArticleDetail = () => {
   const { id } = useParams();
-  const article = articles.find((article) => (article.id === Number(id)));
+  const article = articles.find((article) => article.id === Number(id));
   return (
     <div className="bg-gray-50 min-h-screen">
-
       {/* Main */}
       <main className="max-w-4xl mx-auto px-6 py-12">
-      <Banner articleCover={article.cover} articleTitle={article.title} />
+        <Banner articleCover={article.cover} articleTitle={article.title} />
 
         <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-6 items-center">
           <Author articleAuthor={article.author.name} />

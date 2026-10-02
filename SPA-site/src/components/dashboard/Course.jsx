@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { UserContext } from "../CartContext/UserContext";
+import { useSelector } from "react-redux";
 import courses from "../../data/courses";
 
 function Course() {
-  const { user } = useContext(UserContext);
+  const user = useSelector((state)=> state.user.user)
   const purchasedCourses = user?.purchasedCourses || [];
 
   const myCourses = courses.filter((course) =>

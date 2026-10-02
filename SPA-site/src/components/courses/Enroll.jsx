@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { CartContext } from "../CartContext/CartContext";
-
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 function Enroll({ course }) {
-  const {addToCart} = useContext(CartContext)
+  const dispatch = useDispatch();
   return (
     <div className="bg-blue-50 border border-blue-200 p-6 rounded-2xl flex flex-col sm:flex-row justify-between items-center">
       <div className="mb-4 sm:mb-0">
@@ -12,8 +11,9 @@ function Enroll({ course }) {
         </p>
       </div>
       <button
-      onClick={()=>addToCart(course)}
-      className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition">
+        onClick={() => dispatch(addToCart(course))}
+        className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition"
+      >
         ثبت‌نام در دوره
       </button>
     </div>

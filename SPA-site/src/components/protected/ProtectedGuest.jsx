@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import { UserContext } from "../CartContext/UserContext";
 import { Navigate } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 function ProtectedGuest({ children }) {
-  const { user } = useContext(UserContext);
+  const user = useSelector((state) => state.user.user);
   if (user) {
     return <Navigate to={"/dashboard"} />;
   } else {

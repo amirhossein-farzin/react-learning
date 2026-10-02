@@ -1,13 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../CartContext/UserContext";
-
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/userSlice";
 function Logout() {
-  const { logOut } = useContext(UserContext);
+  const dispatch = useDispatch()
   const navigate = useNavigate();
 
   useEffect(() => {
-    logOut();
+    dispatch(logout());
     navigate("/login");
   }, []);
 

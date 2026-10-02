@@ -5,7 +5,7 @@ const Courses = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Main Content */}
-      <main className="flex-grow w-[92rem] mx-auto px-6 py-16">
+      <main className="grow w-[92rem] mx-auto px-6 py-16">
         <h2 className="text-4xl font-bold mb-10 text-center">
           دوره‌های آموزشی
         </h2>

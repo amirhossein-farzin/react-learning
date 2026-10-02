@@ -1,26 +1,23 @@
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaLock, FaEnvelope, FaUserAlt } from "react-icons/fa";
-import { UserContext } from "../CartContext/UserContext";
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/userSlice";
 function Form() {
-  const { login } = useContext(UserContext);
+  const dispatch = useDispatch();
+  const { user, success, message } = useSelector((state) => state.user);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const [error, setError] = useState(null);
   const navigate = useNavigate("/dashboard");
   const submitHandler = (e) => {
     e.preventDefault();
-
-    const result = login(email, password);
-
-    if (result.success) {
-      setError("")
-      navigate("/dashboard");
-    } else {
-      setError(result.message);
-    }
+    dispatch(login({ email, password }));
   };
+  useEffect(() => {
+    if (success && user) {
+      navigate("/dashboard")
+    }
+  }, [success, user]);
   return (
     <div className="p-8 sm:p-12">
       <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
@@ -49,8 +46,8 @@ function Form() {
             className="w-full pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
           />
         </div>
-        {error && (
-          <p className="text-bold text-center text-red-500" >{error}</p>
+        {success === false && message && (
+          <p className="text-bold text-center text-red-500">{message}</p>
         )}
         <div className="flex justify-between text-sm text-gray-500">
           <label className="flex items-center gap-1">
